@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %} Home | {% endblock title %}
+{% block content %}
+
+<section class="hero is-medium is-light is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">Welcome to Minutos</h1>
+            <h2 class="subtitle">Time Tracking made simple</h2>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <div class="columns is-align-items mt-6">
+                <div class="column is-4 image">
+                    <img src="{% static 'images/features-tracktime.jpg' %}" alt="" />
+                </div>
+
+                <div class="column is-8 text">
+                    <h2 class="subtitle">Simple time tracking</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias quam
+                        dignissimos illum similique porro possimus explicabo ea ipsum
+                        deleniti fuga?
+                    </p>
+                </div>
+            </div>
+            <div class="columns is-align-items mt-6">
+                <div class="column is-8 text">
+                    <h2 class="subtitle">Simple time tracking</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias quam
+                        dignissimos illum similique porro possimus explicabo ea ipsum
+                        deleniti fuga?
+                    </p>
+                </div>
+                <div class="column is-4 image">
+                    <img src="{% static 'images/features-tracktime.jpg' %}" alt="" />
+                </div>
+            </div>
+
+            <div class="columns is-align-items mt-6">
+                <div class="column is-4 image">
+                    <img src="{% static 'images/features-tracktime.jpg' %}" alt="" />
+                </div>
+
+                <div class="column is-8 text">
+                    <h2 class="subtitle">Simple time tracking</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias quam
+                        dignissimos illum similique porro possimus explicabo ea ipsum
+                        deleniti fuga?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="columns is-align-items-center mt-6">
+        <div class="column is-4 is-offset-4 has-text-centered">
+            <h2 class="subtitle">Lorem, ipsum dolor.</h2>
+            <a href=" {% url 'signup' %}" class="button is-success is-large"> Get a free Account</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

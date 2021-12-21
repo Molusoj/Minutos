@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %} {% endblock title %} Minutos</title>
+
+  <!-- Css -->
+  <link rel="stylesheet" href="https://cdn.delivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+</head>
+
+<body>
+  <!-- Nabra -->
+  <div id="navbar-app">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a href="/" class="navbar-item"> <strong>Minutos</strong> </a>
+      </div>
+
+      <div class="navbar-menu">
+        <div class="navbar-end">{% if not request.user.is_authenticated %}
+
+
+          <a href=" {% url 'plans' %} " class="navbar-item"> Plans </a>
+          {% endif %}
+
+          <div class="navbar-item">
+            <div class="buttons">
+
+              {% if request.user.is_authenticated %}
+              <a href=" {% url 'myaccount' %} " class="button is-success">
+                {% firstof request.user.get_full_name request.user.username %}
+                {% if active_team %}
+                {{active_team.title}}
+                {% endif %}
+              </a>
+              {% else %}
+              <a href=" {% url 'signup' %} " class="button is-success">
+                Sign Up</a>
+              <a href=" {% url 'login' %} " class="button"> Log in </a>
+              {% endif %}
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <section class="section">
+
+    {% if messages %}
+
+    {% endif %}
+
+    {% for message in messages %}
+    <div class="notification is-info">
+      {{message}}
+    </div>
+    {% endfor %}
+
+    {% block content %} {% endblock content %}
+  </section>
+
+  <!-- footer -->
+
+  <footer class="footer">
+    <div class="columns is-multiline">
+      <div class="column is-4">
+        <h2 class="subtitle">Minutos</h2>
+      </div>
+      <div class="column is-offset-6 is-2">
+        <ul>
+          <li><a href="#"> Contact </a></li>
+          <li><a href=" {% url 'privacy' %} "> Privacy Policy </a></li>
+          <li><a href=" {% url 'terms' %} "> Terms of service </a></li>
+        </ul>
+      </div>
+      <div class="column is-12 has-text-centered">
+        <p>Copyright (c) 2021</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+
+  <script src="https://unpkg.com/vue@next"></script>
+
+  {% block scripts %}
+
+  {% endblock scripts %}
+
+
+</body>
+
+</html>

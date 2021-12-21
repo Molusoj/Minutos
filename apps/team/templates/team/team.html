@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+
+
+
+{% block title %}
+{{team.title}} |
+{% endblock title %}
+
+
+
+
+{% block content %}
+<nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="{% url 'myaccount' %}">My account</a></li>
+        <li class="is-active"><a href="{% url 'team:team' team.id %}" aria-current="page"> {{ team.title }} </a></li>
+    </ul>
+</nav>
+
+<div class="columns is-multiline" id="team-app">
+    <div class="column is-4">
+        <h1 class="title"> {{team.title}} </h1>
+
+        <hr>
+
+        <h2 class="subtitle mt-6"> Members </h2>
+
+        {% for members in team.members.all %}
+        <p> {{memeber.username}} </p>
+        {% endfor %}
+    </div>
+
+
+
+    {% if team.created_by == request.user %}
+    <div class="column is-4">
+        <hr>
+
+        <h3 class="subtitle"> Owners Actions</h3>
+        <a href=" {% url 'team:edit' %} " class="button is-warning">Edit Team</a>
+    </div>
+    {% endif %}
+
+</div>
+
+
+{% endblock %}
